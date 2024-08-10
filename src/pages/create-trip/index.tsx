@@ -20,10 +20,7 @@ export function CreateTripPage() {
     DateRange | undefined
   >();
 
-  const [emailsToInvite, setEmailsToInvite] = useState([
-    "pedro@rocketseat.com.br",
-    "pedromelosilva11911@gmail.com",
-  ]);
+  const [emailsToInvite, setEmailsToInvite] = useState<string[]>([]);
 
   function openGuestInput() {
     setIsGuestInputOpen(true);

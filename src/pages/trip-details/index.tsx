@@ -5,16 +5,27 @@ import { ImportantLinks } from "./importantLinks";
 import { Guests } from "./guests";
 import { Activities } from "./activities";
 import { DestinationAndDate } from "./destinationAndDate";
+import { Button } from "../../components/Button";
+import { CreateLinkModal } from "./createLinkModal";
 
 export default function TripDetailsPage() {
   const [isCreateActivityModalOpen, setIsCreateActivityModalOpen] =
     useState(false);
+  const [isCreateLinkModalOpen, setIsCreateLinkModalOpen] = useState(false);
 
   function openActivityModal() {
     setIsCreateActivityModalOpen(true);
   }
   function closeActivityModal() {
     setIsCreateActivityModalOpen(false);
+  }
+
+  function openLinkModal() {
+    setIsCreateLinkModalOpen(true);
+  }
+
+  function closeLinkModal() {
+    setIsCreateLinkModalOpen(false);
   }
 
   return (
@@ -36,6 +47,13 @@ export default function TripDetailsPage() {
         </div>
         <div className="w-80 space-y-6">
           <ImportantLinks />
+          <Button variant="secondary" size="full" onClick={openLinkModal}>
+            <Plus className="size-5" />
+            Cadastrar novo link
+          </Button>
+          {isCreateLinkModalOpen && (
+            <CreateLinkModal closeLinkModal={closeLinkModal} />
+          )}
           <div className="w-full h-px bg-zinc-800"></div>
           <div>
             <Guests />
