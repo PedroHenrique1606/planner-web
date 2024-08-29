@@ -24,7 +24,9 @@ export function CreateLinkModal({ closeLinkModal }: CreateLinkModalProps) {
     });
 
     closeLinkModal();
-    location.reload();
+    setTimeout(() => {
+      location.reload();
+    }, 3000);
   }
 
   return (

@@ -26,7 +26,9 @@ export function CreateActivityModal({
     });
 
     closeActivityModal();
-    location.reload();
+    setTimeout(() => {
+      location.reload();
+    }, 3000);
   }
 
   return (
