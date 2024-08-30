@@ -3,6 +3,7 @@ import { Button } from "../../components/Button";
 import { FormEvent } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { toast } from "sonner";
 
 interface CreateLinkModalProps {
   closeLinkModal: () => void;
@@ -25,7 +26,7 @@ export function CreateLinkModal({ closeLinkModal }: CreateLinkModalProps) {
 
     closeLinkModal();
     setTimeout(() => {
-      location.reload();
+      toast.success("Link criado com sucesso");
     }, 3000);
   }
 
