@@ -18,7 +18,9 @@ export function DestinationAndDate() {
   const [trip, setTrip] = useState<Trip | undefined>();
 
   useEffect(() => {
-    axios.get(`https://plannernodeapi.onrender.com/trips/${tripId}`).then((response) => setTrip(response.data.trip));
+    axios
+      .get(`https://plannernodeapi.onrender.com/trips/${tripId}`)
+      .then((response) => setTrip(response.data.trip));
   }, [tripId]);
 
   const displayedDate = trip
