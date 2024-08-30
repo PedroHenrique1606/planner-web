@@ -1,0 +1,9 @@
+{
+    "rewrites": [
+      {
+        "source": "/api/(.*)",
+        "destination": "https://plannernodeapi.onrender.com/api/$1"
+      }
+    ]
+  }
+  
