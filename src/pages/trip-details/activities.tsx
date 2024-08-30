@@ -1,9 +1,9 @@
 import { Activity, CircleCheck, CircleDashed } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { api } from "../../lib/axios";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
+import axios from "axios";
 
 interface Activity {
   date: string;
@@ -19,8 +19,8 @@ export function Activities() {
   const [activities, setActivities] = useState<Activity[]>([]);
 
   useEffect(() => {
-    api
-      .get(`/trips/${tripId}/activities`)
+    axios
+      .get(`https://plannernodeapi.onrender.com/trips/${tripId}/activities`)
       .then((response) => setActivities(response.data.activities));
   }, [tripId]);
   return (
@@ -42,7 +42,8 @@ export function Activities() {
                   {category.activities.map((activity) => {
                     const activityTime = new Date(activity.occurs_at).getTime();
                     const now = new Date().getTime();
-                    const Icon = now > activityTime ? CircleCheck : CircleDashed;
+                    const Icon =
+                      now > activityTime ? CircleCheck : CircleDashed;
 
                     return (
                       <div

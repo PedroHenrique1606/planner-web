@@ -1,8 +1,8 @@
 import { CircleCheck, CircleDashed, UserCog } from "lucide-react";
 import { Button } from "../../components/Button";
-import { api } from "../../lib/axios";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 interface Participant {
   id: string;
@@ -16,8 +16,8 @@ export function Guests() {
   const [participant, setParticipant] = useState<Participant[]>([]);
 
   useEffect(() => {
-    api
-      .get(`/trips/${tripId}/participants`)
+    axios
+      .get(`https://plannernodeapi.onrender.com/trips/${tripId}/participants`)
       .then((response) => setParticipant(response.data.participants));
   }, [tripId]);
   return (

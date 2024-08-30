@@ -1,7 +1,7 @@
+import axios from "axios";
 import { Link2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { api } from "../../lib/axios";
 
 interface Links {
   id: string;
@@ -14,8 +14,8 @@ export function ImportantLinks() {
   const [links, setLinks] = useState<Links[]>([]);
 
   useEffect(() => {
-    api
-      .get(`/trips/${tripId}/links`)
+    axios
+      .get(`https://plannernodeapi.onrender.com/trips/${tripId}/links`)
       .then((response) => setLinks(response.data.links));
   }, [tripId]);
   return (
