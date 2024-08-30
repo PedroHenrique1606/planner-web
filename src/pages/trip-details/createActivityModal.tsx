@@ -1,8 +1,8 @@
 import { Calendar, Tag, X } from "lucide-react";
 import { Button } from "../../components/Button";
 import { FormEvent } from "react";
-import { api } from "../../lib/axios";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 
 interface CreateActivityModalProps {
   closeActivityModal: () => void;
@@ -20,10 +20,13 @@ export function CreateActivityModal({
     const occurs_at = data.get("occurs_at")?.toString();
     console.log({ title, occurs_at });
 
-    api.post(`/trips/${tripId}/activities`, {
-      title,
-      occurs_at,
-    });
+    await axios.post(
+      `https://plannernodeapi.onrender.com/trips/${tripId}/activities`,
+      {
+        title,
+        occurs_at,
+      }
+    );
 
     closeActivityModal();
     setTimeout(() => {

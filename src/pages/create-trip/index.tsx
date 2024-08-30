@@ -5,7 +5,7 @@ import { ConfirmTripModal } from "./confirmTripModal";
 import { DestinationAndDateStep } from "./steps/destinationAndDateStep";
 import { InviteGuestsSteps } from "./steps/inviteGuestsStep";
 import { DateRange } from "react-day-picker";
-import { api } from "../../lib/axios";
+import axios from "axios";
 
 export function CreateTripPage() {
   const navigate = useNavigate();
@@ -99,7 +99,7 @@ export function CreateTripPage() {
       return;
     }
 
-    const response = await api.post("/trips", {
+    const response = await axios.post(`https://plannernodeapi.onrender.com/trips`, {
       destination,
       starts_at: eventStartAndDates?.from,
       ends_at: eventStartAndDates?.to,

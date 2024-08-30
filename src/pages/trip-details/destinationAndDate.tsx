@@ -1,9 +1,9 @@
 import { MapPin, Calendar, Settings2 } from "lucide-react";
 import { useParams } from "react-router-dom";
 import { Button } from "../../components/Button";
-import { api } from "../../lib/axios";
 import { useEffect, useState } from "react";
 import { format } from "date-fns";
+import axios from "axios";
 
 interface Trip {
   id: string;
@@ -18,7 +18,7 @@ export function DestinationAndDate() {
   const [trip, setTrip] = useState<Trip | undefined>();
 
   useEffect(() => {
-    api.get(`/trips/${tripId}`).then((response) => setTrip(response.data.trip));
+    axios.get(`https://plannernodeapi.onrender.com/trips/${tripId}`).then((response) => setTrip(response.data.trip));
   }, [tripId]);
 
   const displayedDate = trip

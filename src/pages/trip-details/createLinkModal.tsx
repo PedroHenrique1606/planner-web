@@ -1,8 +1,8 @@
 import { Link2, Tag, X } from "lucide-react";
 import { Button } from "../../components/Button";
 import { FormEvent } from "react";
-import { api } from "../../lib/axios";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 
 interface CreateLinkModalProps {
   closeLinkModal: () => void;
@@ -18,7 +18,7 @@ export function CreateLinkModal({ closeLinkModal }: CreateLinkModalProps) {
     const url = data.get("url_link")?.toString();
     console.log({ title, url });
 
-    api.post(`/trips/${tripId}/links`, {
+    axios.post(`https://plannernodeapi.onrender.com/trips/${tripId}/links`, {
       title,
       url,
     });
