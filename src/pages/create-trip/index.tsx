@@ -5,7 +5,7 @@ import { ConfirmTripModal } from "./confirmTripModal";
 import { DestinationAndDateStep } from "./steps/destinationAndDateStep";
 import { InviteGuestsSteps } from "./steps/inviteGuestsStep";
 import { DateRange } from "react-day-picker";
-import axios from "axios";
+import { createTripService } from "../../services/tripService"; // Importando o serviço de criação de viagem
 
 export function CreateTripPage() {
   const navigate = useNavigate();
@@ -19,7 +19,6 @@ export function CreateTripPage() {
   const [eventStartAndDates, setEventStartAndDates] = useState<
     DateRange | undefined
   >();
-
   const [emailsToInvite, setEmailsToInvite] = useState<string[]>([]);
 
   function openGuestInput() {
@@ -48,7 +47,6 @@ export function CreateTripPage() {
 
   function addNewEmailToInvite(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-
     const data = new FormData(event.currentTarget);
     const email = data.get("email")?.toString();
 
@@ -71,45 +69,31 @@ export function CreateTripPage() {
     const newEmailList = emailsToInvite.filter(
       (email) => email !== emailToRemove
     );
-
     setEmailsToInvite(newEmailList);
   }
 
   async function createTrip(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    console.log(destination);
-    console.log(eventStartAndDates);
-    console.log(emailsToInvite);
-    console.log(ownerName);
-    console.log(ownerEmail);
 
-    if (!destination) {
+    if (!destination || !eventStartAndDates?.from || emailsToInvite.length === 0 || !ownerEmail || !ownerName) {
       return;
     }
 
-    if (!eventStartAndDates || !eventStartAndDates.from) {
-      return;
+    try {
+      const tripData = {
+        destination,
+        starts_at: eventStartAndDates.from,
+        ends_at: eventStartAndDates?.to,
+        emails_to_invite: emailsToInvite,
+        owner_name: ownerName,
+        owner_email: ownerEmail,
+      };
+
+      const { tripId } = await createTripService(tripData); // Usando a função do serviço
+      navigate(`/trips/${tripId}`);
+    } catch (error) {
+      console.error("Failed to create trip", error);
     }
-
-    if (emailsToInvite.length === 0) {
-      return;
-    }
-
-    if (!ownerEmail || !ownerName) {
-      return;
-    }
-
-    const response = await axios.post(`https://plannernodeapi.onrender.com/trips`, {
-      destination,
-      starts_at: eventStartAndDates?.from,
-      ends_at: eventStartAndDates?.to,
-      emails_to_invite: emailsToInvite,
-      owner_name: ownerName,
-      owner_email: ownerEmail,
-    });
-
-    const { tripId } = response.data;
-    navigate(`/trips/${tripId}`);
   }
 
   return (
@@ -117,7 +101,6 @@ export function CreateTripPage() {
       <div className="max-w-3xl w-full px-6 text-center space-y-10">
         <div className="flex flex-col items-center gap-3">
           <img src="/logo.svg" alt="Logo planner" />
-
           <p className="text-zinc-300 text-lg">
             Convide seus amigos e planeje sua próxima viagem!
           </p>

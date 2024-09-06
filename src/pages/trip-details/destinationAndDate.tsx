@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { Button } from "../../components/Button";
 import { useEffect, useState } from "react";
 import { format } from "date-fns";
-import axios from "axios";
+import { getTripById } from "../../services/getTripById"; // Importando o serviço de API
 
 interface Trip {
   id: string;
@@ -18,15 +18,17 @@ export function DestinationAndDate() {
   const [trip, setTrip] = useState<Trip | undefined>();
 
   useEffect(() => {
-    axios
-      .get(`https://plannernodeapi.onrender.com/trips/${tripId}`)
-      .then((response) => setTrip(response.data.trip));
+    if (tripId) {
+      getTripById(tripId)
+        .then((data) => setTrip(data))
+        .catch((error) => console.error("Erro ao buscar a viagem:", error));
+    }
   }, [tripId]);
 
   const displayedDate = trip
-    ? format(trip?.starts_at, "d ' de ' LLL")
-        .concat(" até ")
-        .concat(format(trip?.ends_at, "d ' de ' LLL"))
+    ? format(new Date(trip.starts_at), "d ' de ' LLL")
+      .concat(" até ")
+      .concat(format(new Date(trip.ends_at), "d ' de ' LLL"))
     : null;
 
   return (
