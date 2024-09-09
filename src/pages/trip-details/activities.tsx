@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import axios from "axios";
+import { toast } from "sonner";
 
 interface Activity {
   date: string;
@@ -22,7 +23,9 @@ export function Activities() {
     axios
       .get(`https://plannernodeapi.onrender.com/trips/${tripId}/activities`)
       .then((response) => setActivities(response.data.activities));
+      toast.success("Veja suas atividades")
   }, [tripId]);
+
   return (
     <div className="space-y-8">
       {activities.map((category) => {

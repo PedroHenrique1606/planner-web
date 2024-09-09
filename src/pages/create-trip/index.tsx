@@ -6,6 +6,7 @@ import { DestinationAndDateStep } from "./steps/destinationAndDateStep";
 import { InviteGuestsSteps } from "./steps/inviteGuestsStep";
 import { DateRange } from "react-day-picker";
 import { createTripService } from "../../services/tripService"; // Importando o serviço de criação de viagem
+import { toast } from "sonner";
 
 export function CreateTripPage() {
   const navigate = useNavigate();
@@ -90,6 +91,7 @@ export function CreateTripPage() {
       };
 
       const { tripId } = await createTripService(tripData); // Usando a função do serviço
+      toast.success("Sua viagem foi criada com sucesso!")
       navigate(`/trips/${tripId}`);
     } catch (error) {
       console.error("Failed to create trip", error);
