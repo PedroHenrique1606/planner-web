@@ -1,30 +1,37 @@
-# React + TypeScript + Vite
+# Planner Web
+- The project is a desktop site for making travel plans with friends, registering activities and useful links.
+- This is one of the projects from Rocketseat's NLW Journey event where I was able to learn a lot about ReactJS, NodeJS and also add authorial details to the project.
+---
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project UI
+- The project's user interface was developed by [Rocketseat](https://github.com/rocketseat-education)
+![ThumbProject](./public/thumproject.png)
 
-Currently, two official plugins are available:
+[Project Figma](https://www.figma.com/design/KzQK02Eeuyrzjt19I462FC/NLW-Journey-%E2%80%A2-Planejador-de-viagem-(Community)?node-id=0-1&node-type=canvas&t=kg3mf6aaZAdZbtmG-0)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+## Stacks
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+This project used the following stacks on the front:
 
-- Configure the top-level `parserOptions` property like this:
+- ![JavaScript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
+- ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+- ![EsLint](https://img.shields.io/badge/eslint-3A33D1?style=for-the-badge&logo=eslint&logoColor=white)
+- ![TailwindCss](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+
+## Installation
+
+- Clone the project repository with:
+
+```bash
+  git clone https://github.com/PedroHenrique1606/planner-web.git
+  cd planner-web
 ```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- Install my-project with npm and start project
+    
+```bash
+  npm install
+  cd run dev
+```
+    
