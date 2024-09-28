@@ -31,7 +31,7 @@ export default function TripDetailsPage() {
   return (
     <div className="max-w-6xl px-6 py-10 mx-auto space-y-8">
       <DestinationAndDate />
-      <main className="flex gap-16 px-4">
+      <main className="flex flex-col lg:flex-row gap-16 px-4">
         <div className="flex-1 space-y-6">
           <div className="flex items-center justify-between">
             <h2 className="font-semibold text-3xl">Atividades</h2>
@@ -45,7 +45,7 @@ export default function TripDetailsPage() {
           </div>
           <Activities />
         </div>
-        <div className="w-80 space-y-6">
+        <div className="w-80 space-y-6 md:space-y-4">
           <ImportantLinks />
           <Button variant="secondary" size="full" onClick={openLinkModal}>
             <Plus className="size-5" />

@@ -3,6 +3,7 @@ import { Button } from "../../components/Button";
 import { FormEvent } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { toast } from "sonner";
 
 interface CreateActivityModalProps {
   closeActivityModal: () => void;
@@ -31,6 +32,7 @@ export function CreateActivityModal({
     closeActivityModal();
     setTimeout(() => {
       location.reload();
+      toast.success("Atividade criada com sucesso")
     }, 3000);
   }
 

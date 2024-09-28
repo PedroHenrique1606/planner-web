@@ -27,6 +27,7 @@ export function CreateLinkModal({ closeLinkModal }: CreateLinkModalProps) {
     closeLinkModal();
     setTimeout(() => {
       toast.success("Link criado com sucesso");
+      location.reload();
     }, 3000);
   }
 
