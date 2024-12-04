@@ -14,3 +14,16 @@ export async function createTripService(data: CreateTripData) {
     const response = await api.post('/trips', data);
     return response.data;
 }
+
+api.interceptors.request.use(request => {
+    console.log('Requisição Enviada:', request);
+    return request;
+});
+
+api.interceptors.response.use(
+    response => response,
+    error => {
+        console.error('Erro na Requisição:', error.response || error.message);
+        return Promise.reject(error);
+    }
+);
