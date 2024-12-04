@@ -1,7 +1,6 @@
 import { AtSign, Plus, X } from "lucide-react";
 import { FormEvent } from "react";
 import { Button } from "../../components/Button";
-import { toast } from "sonner";
 
 interface InviteGuestsModalProps {
   closeGuestsModal: () => void;
