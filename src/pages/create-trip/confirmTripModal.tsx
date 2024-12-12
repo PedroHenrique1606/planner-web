@@ -60,15 +60,7 @@ export function ConfirmTripModal({
             </button>
           </div>
           <p className="text-sm text-zinc-400">
-            Para concluir a criação da viagem para{" "}
-            <span className="text-zinc-100 font-semibold">
-              Florianópolis, Brasil
-            </span>
-            nas datas de{" "}
-            <span className="text-zinc-100 font-semibold">
-              16 a 27 de Agosto de 2024
-            </span>{" "}
-            preencha seus dados abaixo:
+            Para concluir a criação da viagem, preencha seus dados abaixo:
           </p>
         </div>
         <form onSubmit={handleSubmit} className="space-y-3">

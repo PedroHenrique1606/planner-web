@@ -76,6 +76,7 @@ export function DestinationAndDateStep({
             </div>
             <DayPicker
               mode="range"
+              className="p-2 m-2"
               selected={eventStartAndDates}
               onSelect={setEventStartAndDates}
             />

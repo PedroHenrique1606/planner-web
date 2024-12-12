@@ -15,7 +15,7 @@ export function ImportantLinks() {
 
   useEffect(() => {
     axios
-      .get(`https://plannernodeapi.onrender.com/trips/${tripId}/links`)
+      .get(`${import.meta.env.VITE_BACKEND_URL}/trips/${tripId}/links`)
       .then((response) => setLinks(response.data.links));
   }, [tripId]);
   return (

@@ -17,7 +17,7 @@ export function Guests() {
 
   useEffect(() => {
     axios
-      .get(`https://plannernodeapi.onrender.com/trips/${tripId}/participants`)
+      .get(`${import.meta.env.VITE_BACKEND_URL}/trips/${tripId}/participants`)
       .then((response) => setParticipant(response.data.participants));
   }, [tripId]);
   return (

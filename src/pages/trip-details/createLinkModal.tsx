@@ -19,7 +19,7 @@ export function CreateLinkModal({ closeLinkModal }: CreateLinkModalProps) {
     const url = data.get("url_link")?.toString();
     console.log({ title, url });
 
-    axios.post(`https://plannernodeapi.onrender.com/trips/${tripId}/links`, {
+    axios.post(`${import.meta.env.VITE_BACKEND_URL}/trips/${tripId}/links`, {
       title,
       url,
     });
@@ -32,7 +32,7 @@ export function CreateLinkModal({ closeLinkModal }: CreateLinkModalProps) {
   }
 
   return (
-    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center">
+    <div className="fixed m-4 inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center">
       <div className="w-[640px] rounded-xl py-5 px-6 shadow-shape bg-zinc-900 space-y-5">
         <div className=" space-y-2">
           <div className="flex items-center justify-between">

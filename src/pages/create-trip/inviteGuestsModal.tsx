@@ -76,7 +76,7 @@ export function InviteGuestsModal({
             variant="primary"
             className="text-sm md:text-base flex items-center gap-2"
           >
-            Convidar
+            <p className="hidden md:flex">Convidar</p>
             <Plus className="size-5 text-lime-950" />
           </Button>
         </form>

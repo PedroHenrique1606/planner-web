@@ -21,7 +21,7 @@ export function Activities() {
 
   useEffect(() => {
     axios
-      .get(`https://plannernodeapi.onrender.com/trips/${tripId}/activities`)
+      .get(`${import.meta.env.VITE_BACKEND_URL}/trips/${tripId}/activities`)
       .then((response) => setActivities(response.data.activities))
       .catch(() => toast.error("Erro ao carregar atividades"))
       .finally(() => toast.success("Veja suas atividades"));

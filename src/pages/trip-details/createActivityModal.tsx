@@ -22,7 +22,7 @@ export function CreateActivityModal({
     console.log({ title, occurs_at });
 
     await axios.post(
-      `https://plannernodeapi.onrender.com/trips/${tripId}/activities`,
+      `${import.meta.env.VITE_BACKEND_URL}/trips/${tripId}/activities`,
       {
         title,
         occurs_at,
@@ -37,12 +37,12 @@ export function CreateActivityModal({
   }
 
   return (
-    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center">
+    <div className="fixed m-4 inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center">
       <div className="w-[640px] rounded-xl py-5 px-6 shadow-shape bg-zinc-900 space-y-5">
         <div className=" space-y-2">
           <div className="flex items-center justify-between">
             <h2 className="text-lg font-semibold">
-              Confirmar criação de viagem
+              Criar nova atividade
             </h2>
             <button type="button" onClick={closeActivityModal}>
               <X className="size-5 text-zinc-400" />
